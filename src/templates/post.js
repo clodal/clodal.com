@@ -76,9 +76,9 @@ const PostTemplate = ({data}) => {
 
     <Post>
 
-      {tags && (<Tags items={tags} />)}
-
       <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
+
+      {tags && (<Tags items={tags} />)}
 
       <PostNavigation >
         {postIndex.previous && (<PreviousLink to={`/posts/${postIndex.previous.slug}/`}>Prev Post</PreviousLink>)}

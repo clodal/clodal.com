@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.ul`
-  margin: 0 0 2em 0;
+  margin-top: 2em;
 `
 
 const Label = styled.span`

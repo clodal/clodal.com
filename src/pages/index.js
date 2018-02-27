@@ -1,11 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image'
-import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
-import { Header } from 'semantic-ui-react';
+import { Header, Container } from 'semantic-ui-react';
 
 const Index = ({data}) =>  {
 
@@ -13,34 +11,6 @@ const Index = ({data}) =>  {
     padding: 2em 1.5em;
     margin: 0 auto;
     max-width: ${props => props.theme.sizes.maxWidth};
-  `;
-
-  // const Header = styled.div`
-  //   h1 {
-  //     font-size: 1.5em;
-  //     text-transform: capitalize;
-  //     font-weight: 600;
-  //     text-align: center;
-  //     margin: 2rem 0 4rem;
-  //     line-height: 1.25;
-  //   }
-  //   span {
-  //     margin: 0 0 0 .25em;
-  //   }
-  //   a {
-  //     transition: all .2s;
-  //     color: ${props => props.theme.colors.base};
-  //     &:hover {
-  //       color: ${props => props.theme.colors.highlight};
-  //     }
-  //   }
-  // `;
-
-  const Title = styled.h2`
-    font-size: 3em;
-    font-weight: 600;
-    text-align: center;
-    margin: 0 0 1em 0;
   `;
 
   const List = styled.ul`
@@ -101,20 +71,24 @@ const Index = ({data}) =>  {
 
       <Wrapper>
 
-        <Header as="h1" textAlign="center">Huge Header</Header>
+        <Container>
 
-        {posts && (
-          <List>
-             {posts.map(({ node: post, index }) => (
+          <Header as="h1" size="huge">{config.siteTitle}</Header>
+
+          {posts && (
+            <List>
+              {posts.map(({ node: post, index }) => (
                 <Card key={post.id}>
                   <PostLink to={`/posts/${post.slug}/`}>
                     <Img sizes={post.heroImage.sizes} backgroundColor={'#EEEEEE'} />
                     <h3>{post.title}</h3>
                   </PostLink>
                 </Card>
-             ))}
-          </List>
-        )}
+              ))}
+            </List>
+          )}
+
+        </Container>
 
       </Wrapper>
 
