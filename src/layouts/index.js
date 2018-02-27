@@ -7,6 +7,7 @@ import theme from '../styles/theme'
 import Menu from '../components/menu'
 import Footer from '../components/footer'
 import favicon from '../images/favicon.ico'
+import '../../semantic/dist/semantic.css'
 
 const Template = ({ children }) => {
 

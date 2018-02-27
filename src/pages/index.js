@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
+import { Header } from 'semantic-ui-react';
 
 const Index = ({data}) =>  {
 
@@ -14,26 +15,26 @@ const Index = ({data}) =>  {
     max-width: ${props => props.theme.sizes.maxWidth};
   `;
 
-  const Header = styled.div`
-    h1 {
-      font-size: 1.5em;
-      text-transform: capitalize;
-      font-weight: 600;
-      text-align: center;
-      margin: 2rem 0 4rem;
-      line-height: 1.25;
-    }
-    span {
-      margin: 0 0 0 .25em;
-    }
-    a {
-      transition: all .2s;
-      color: ${props => props.theme.colors.base};
-      &:hover {
-        color: ${props => props.theme.colors.highlight};
-      }
-    }
-  `;
+  // const Header = styled.div`
+  //   h1 {
+  //     font-size: 1.5em;
+  //     text-transform: capitalize;
+  //     font-weight: 600;
+  //     text-align: center;
+  //     margin: 2rem 0 4rem;
+  //     line-height: 1.25;
+  //   }
+  //   span {
+  //     margin: 0 0 0 .25em;
+  //   }
+  //   a {
+  //     transition: all .2s;
+  //     color: ${props => props.theme.colors.base};
+  //     &:hover {
+  //       color: ${props => props.theme.colors.highlight};
+  //     }
+  //   }
+  // `;
 
   const Title = styled.h2`
     font-size: 3em;
@@ -100,9 +101,7 @@ const Index = ({data}) =>  {
 
       <Wrapper>
 
-        <Header>
-          <h1>A blog made with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a>, <a href="https://www.contentful.com/" target="_blank">Contentful</a> and <a href="https://www.netlify.com/" target="_blank">Netlify</a> <span>🎉</span></h1>
-        </Header>
+        <Header as="h1" textAlign="center">Huge Header</Header>
 
         {posts && (
           <List>

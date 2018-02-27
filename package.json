@@ -24,6 +24,7 @@
     "path": "^0.12.7",
     "promise-polyfill": "^7.1.0",
     "react-helmet": "^5.2.0",
+    "semantic-ui-react": "^0.78.3",
     "styled-components": "^3.1.6",
     "whatwg-fetch": "^2.0.3"
   },
@@ -38,9 +39,11 @@
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "node ./bin/setup.js",
-    "dev": "gatsby develop"
+    "dev": "gatsby develop",
+    "build-theme": "cd semantic && gulp build-css && gulp build-assets"
   },
   "devDependencies": {
-    "prettier": "^1.10.2"
+    "prettier": "^1.10.2",
+    "semantic-ui": "^2.3.0"
   }
 }
