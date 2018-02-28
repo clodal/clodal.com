@@ -8,6 +8,8 @@ import config from '../utils/siteConfig'
 import Hero from '../components/hero'
 import Tags from '../components/tags'
 import Body from '../components/body'
+import { Container } from 'semantic-ui-react';
+
 
 const PostTemplate = ({data}) => {
 
@@ -28,10 +30,8 @@ const PostTemplate = ({data}) => {
     ({ node: post }) => post.id === id
   );
 
-  const Post = styled.section`
-    margin: 0 auto;
-    max-width: ${props => props.theme.sizes.maxWidthCentered};
-    padding: 3em 1.5em;
+  const PostContainer = styled(Container)`
+    padding: 3em;
   `;
 
   const PostNavigation = styled.div`
@@ -74,7 +74,7 @@ const PostTemplate = ({data}) => {
 
     <Hero title={title} image={heroImage.sizes} height={'50vh'}/>
 
-    <Post>
+    <PostContainer text>
 
       <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
 
@@ -85,7 +85,7 @@ const PostTemplate = ({data}) => {
         {postIndex.next && (<NextLink to={`/posts/${postIndex.next.slug}/`}>Next Post</NextLink>)}
       </PostNavigation>
 
-    </Post>
+    </PostContainer>
 
   </div>
   )
