@@ -252,11 +252,11 @@
           transform: translateX(-50%) translateY(-50%);
   content: 'Ad';
   color: #FFFFFF;
-  font-size: 1em;
+  font-size: 0.9775em;
   font-weight: bold;
 }
 .ui.mobile.test.ad:after {
-  font-size: 0.85em;
+  font-size: 0.8625em;
 }
 .ui.test.ad[data-text]:after {
   content: attr(data-text);

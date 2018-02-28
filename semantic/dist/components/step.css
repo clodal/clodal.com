@@ -29,7 +29,7 @@
   -webkit-box-shadow: none;
           box-shadow: none;
   line-height: 1.15em;
-  border-radius: 0.2rem;
+  border-radius: 0.23rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
 
@@ -110,12 +110,12 @@
 /* First Step */
 .ui.steps .step:first-child {
   padding-left: 2em;
-  border-radius: 0.2rem 0em 0em 0.2rem;
+  border-radius: 0.23rem 0em 0em 0.23rem;
 }
 
 /* Last Step */
 .ui.steps .step:last-child {
-  border-radius: 0em 0.2rem 0.2rem 0em;
+  border-radius: 0em 0.23rem 0.23rem 0em;
 }
 .ui.steps .step:last-child {
   border-right: none;
@@ -124,7 +124,7 @@
 
 /* Only Step */
 .ui.steps .step:only-child {
-  border-radius: 0.2rem;
+  border-radius: 0.23rem;
 }
 
 
@@ -146,7 +146,7 @@
 /* Description */
 .ui.steps .step .description {
   font-weight: normal;
-  font-size: 0.95em;
+  font-size: 0.92em;
   color: rgba(0, 0, 0, 0.87);
 }
 .ui.steps .step > .description {
@@ -245,14 +245,14 @@
 }
 .ui.vertical.steps .step:first-child {
   padding: 1.15em 2em;
-  border-radius: 0.2rem 0.2rem 0em 0em;
+  border-radius: 0.23rem 0.23rem 0em 0em;
 }
 .ui.vertical.steps .step:last-child {
   border-bottom: none;
-  border-radius: 0em 0em 0.2rem 0.2rem;
+  border-radius: 0em 0em 0.23rem 0.23rem;
 }
 .ui.vertical.steps .step:only-child {
-  border-radius: 0.2rem;
+  border-radius: 0.23rem;
 }
 
 /* Arrow */
@@ -305,10 +305,10 @@
   }
   .ui.steps:not(.unstackable) .step:first-child {
     padding: 1.15em 2em;
-    border-radius: 0.2rem 0.2rem 0em 0em;
+    border-radius: 0.23rem 0.23rem 0em 0em;
   }
   .ui.steps:not(.unstackable) .step:last-child {
-    border-radius: 0em 0em 0.2rem 0.2rem;
+    border-radius: 0em 0em 0.23rem 0.23rem;
   }
   
 /* Arrow */
@@ -448,10 +448,10 @@
   }
   .ui[class*="tablet stackable"].steps .step:first-child {
     padding: 1.15em 2em;
-    border-radius: 0.2rem 0.2rem 0em 0em;
+    border-radius: 0.23rem 0.23rem 0em 0em;
   }
   .ui[class*="tablet stackable"].steps .step:last-child {
-    border-radius: 0em 0em 0.2rem 0.2rem;
+    border-radius: 0em 0em 0.23rem 0.23rem;
   }
   
 /* Arrow */
@@ -494,25 +494,25 @@
   width: calc(100% +  2px ) !important;
   margin: 0em -1px 0;
   max-width: calc(100% +  2px );
-  border-radius: 0.2rem 0.2rem 0em 0em;
+  border-radius: 0.23rem 0.23rem 0em 0em;
 }
 .ui.attached.steps .step:first-child {
-  border-radius: 0.2rem 0em 0em 0em;
+  border-radius: 0.23rem 0em 0em 0em;
 }
 .ui.attached.steps .step:last-child {
-  border-radius: 0em 0.2rem 0em 0em;
+  border-radius: 0em 0.23rem 0em 0em;
 }
 
 /* Bottom */
 .ui.bottom.attached.steps {
   margin: 0 -1px 0em;
-  border-radius: 0em 0em 0.2rem 0.2rem;
+  border-radius: 0em 0em 0.23rem 0.23rem;
 }
 .ui.bottom.attached.steps .step:first-child {
-  border-radius: 0em 0em 0em 0.2rem;
+  border-radius: 0em 0em 0em 0.23rem;
 }
 .ui.bottom.attached.steps .step:last-child {
-  border-radius: 0em 0em 0.2rem 0em;
+  border-radius: 0em 0em 0.23rem 0em;
 }
 
 /*-------------------
@@ -571,19 +571,19 @@
 
 .ui.mini.steps .step,
 .ui.mini.step {
-  font-size: 0.8rem;
+  font-size: 0.805rem;
 }
 .ui.tiny.steps .step,
 .ui.tiny.step {
-  font-size: 0.85rem;
+  font-size: 0.8625rem;
 }
 .ui.small.steps .step,
 .ui.small.step {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 .ui.steps .step,
 .ui.step {
-  font-size: 1rem;
+  font-size: 0.9775rem;
 }
 .ui.large.steps .step,
 .ui.large.step {
@@ -591,15 +591,15 @@
 }
 .ui.big.steps .step,
 .ui.big.step {
-  font-size: 1.3rem;
+  font-size: 1.265rem;
 }
 .ui.huge.steps .step,
 .ui.huge.step {
-  font-size: 1.45rem;
+  font-size: 1.4375rem;
 }
 .ui.massive.steps .step,
 .ui.massive.step {
-  font-size: 1.7rem;
+  font-size: 1.725rem;
 }
 
 

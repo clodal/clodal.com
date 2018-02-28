@@ -1,6 +1,10 @@
 import { injectGlobal } from 'styled-components'
 
 injectGlobal`
+  #___gatsby {
+    height: 100%;
+  }
+
   ol, ul {
     list-style: none;
     padding: 0;

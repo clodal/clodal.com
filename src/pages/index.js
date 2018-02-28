@@ -3,11 +3,13 @@ import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
-import { Header, Container } from 'semantic-ui-react';
+import { Header, Container, Segment, Button, Divider } from 'semantic-ui-react';
+
 
 const Index = ({data}) =>  {
 
   const Wrapper = styled.section`
+    height: 100%;
     padding: 2em 1.5em;
     margin: 0 auto;
     max-width: ${props => props.theme.sizes.maxWidth};
@@ -17,7 +19,7 @@ const Index = ({data}) =>  {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    margin: 0 auto;
+    margin: 3em auto;
     &:after {
       content: "";
       @media screen and (min-width: ${props => props.theme.responsive.small}) {
@@ -26,19 +28,6 @@ const Index = ({data}) =>  {
       @media screen and (min-width: ${props => props.theme.responsive.medium}) {
         flex: 0 0 32%;
       }
-    }
-  `;
-
-  const Card = styled.li`
-    border: 1px solid ${props => props.theme.colors.secondary};
-    border-radius: 2px;
-    margin: 0 0 1em 0;
-    width: 100%;
-    @media screen and (min-width: ${props => props.theme.responsive.small}) {
-      flex: 0 0 49%;
-    }
-    @media screen and (min-width: ${props => props.theme.responsive.medium}) {
-      flex: 0 0 32%;
     }
   `;
 
@@ -64,35 +53,39 @@ const Index = ({data}) =>  {
     }
   `;
 
+  const PostHeaderLink = styled(Link)`
+    color: ${props => props.theme.colors.base};
+    font-size: 1.433em; 
+  `;
+
+  const Title = styled(Header)`
+    &.ui.header {
+      font-size: 2.6em;
+    }
+  `;
+
   const posts = data.allContentfulPost.edges;
 
   return (
-    <div>
+    <Wrapper>
+      <Container text>
 
-      <Wrapper>
+        <Title as="h1" dividing>{config.siteTitle}</Title>
 
-        <Container>
+        {posts && (
+          <List>
+            {posts.map(({ node: post, index }) => (
+              <div key={post.id}>
+                <Header as='h3'><PostHeaderLink to={`/posts/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
+                <p>{post.body.childMarkdownRemark.html.substr(3, 255)} ...</p>
+                <Button><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></Button>
+              </div>
+            ))}
+          </List>
+        )}
 
-          <Header as="h1" size="huge">{config.siteTitle}</Header>
-
-          {posts && (
-            <List>
-              {posts.map(({ node: post, index }) => (
-                <Card key={post.id}>
-                  <PostLink to={`/posts/${post.slug}/`}>
-                    <Img sizes={post.heroImage.sizes} backgroundColor={'#EEEEEE'} />
-                    <h3>{post.title}</h3>
-                  </PostLink>
-                </Card>
-              ))}
-            </List>
-          )}
-
-        </Container>
-
-      </Wrapper>
-
-    </div>
+      </Container>
+    </Wrapper>
   )
 }
 

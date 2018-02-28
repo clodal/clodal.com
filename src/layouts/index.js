@@ -2,17 +2,25 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import styled, {ThemeProvider} from 'styled-components'
 import config from '../utils/siteConfig'
-import globals from '../styles/global'
 import theme from '../styles/theme'
 import Menu from '../components/menu'
 import Footer from '../components/footer'
 import favicon from '../images/favicon.ico'
+import '../styles/global'
 import '../../semantic/dist/semantic.css'
+
+
+const Site = styled.div`
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
 const Template = ({ children }) => {
 
     return (
-      <div>
+      <div style={{ height: '100%' }}>
 
         <Helmet>
           <title>{config.siteTitle}</title>
@@ -28,11 +36,11 @@ const Template = ({ children }) => {
         </Helmet>
 
         <ThemeProvider theme={theme}>
-          <div>
+          <Site>
             <Menu/>
             {children()}
             <Footer/>
-          </div>
+          </Site>
         </ThemeProvider>
 
       </div>
