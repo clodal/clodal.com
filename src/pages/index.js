@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
-import { Header, Container, Segment, Button, Divider } from 'semantic-ui-react';
+import { Header, Container, Button } from 'semantic-ui-react';
 
 
 const Index = ({data}) =>  {
