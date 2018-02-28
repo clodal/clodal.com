@@ -31,7 +31,8 @@ const PostTemplate = ({data}) => {
   );
 
   const PostContainer = styled(Container)`
-    padding: 3em;
+    padding-top: 3em;
+    padding-bottom: 3em;
   `;
 
   const PostNavigation = styled.div`
