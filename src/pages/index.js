@@ -6,14 +6,12 @@ import { Header, Container, Button } from 'semantic-ui-react'
 import { Block } from '@onextech/react-semantic-booster'
 
 
-const Index = ({data}) =>  {
-
-  const Wrapper = styled.div`
+const Wrapper = styled.div`
     flex: 1;
     height: 100%;
   `;
 
-  const PostLink = styled(Link)`
+const PostLink = styled(Link)`
     display: flex;
     flex-flow: column;
     height: 100%;
@@ -35,24 +33,42 @@ const Index = ({data}) =>  {
     }
   `;
 
-  const PostHeaderLink = styled(Link)`
+const PostHeaderLink = styled(Link)`
     color: ${props => props.theme.colors.base};
     font-size: 1.433em; 
   `;
 
-  const Title = styled(Header)`
+const Title = styled(Header)`
     &.ui.header {
       font-size: 2.6em;
       margin-bottom: 0.1em;
     }
   `;
 
-  const Subtitle = styled.p`
+const Subtitle = styled.p`
     font-size: 1.26em;
   `;
 
-  const posts = data.allContentfulPost.edges;
+const PostList = styled.ul`
+    li {
+      margin-bottom: 4.5em;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  `;
 
+const ButtonLink = styled(Button)`
+    &.ui.button {
+      padding: 0;
+      a {
+        padding: 0.5em 1.2em;
+      }
+    }
+  `;
+
+const Index = ({ data }) =>  {
+  const posts = data.allContentfulPost.edges;
   return (
     <Wrapper>
       <Block secondary>
@@ -65,15 +81,15 @@ const Index = ({data}) =>  {
       <Block>
         <Container text>
           {posts && (
-            <ul>
+            <PostList>
               {posts.map(({ node: post, index }) => (
                 <li key={post.id}>
                   <Header as='h3'><PostHeaderLink to={`/posts/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
-                  <p>{post.body.childMarkdownRemark.html.substr(3, 255)} ...</p>
-                  <Button><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></Button>
+                  <p>{post.abstract.abstract.substr(0,50)} ...</p>
+                  <ButtonLink><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></ButtonLink>
                 </li>
               ))}
-            </ul>
+            </PostList>
           )}
         </Container>
       </Block>
@@ -94,6 +110,9 @@ export const query = graphql`
             sizes(maxWidth: 1800) {
               ...GatsbyContentfulSizes_noBase64
             }
+          }
+          abstract {
+            abstract
           }
           body {
             childMarkdownRemark {

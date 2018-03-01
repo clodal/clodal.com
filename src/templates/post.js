@@ -11,6 +11,10 @@ import Body from '../components/body'
 import { Container } from 'semantic-ui-react';
 
 
+const Abstract = styled.p`
+  font-size: 1.26em;
+`;
+
 const PostTemplate = ({data}) => {
 
   const {
@@ -19,6 +23,7 @@ const PostTemplate = ({data}) => {
     slug,
     heroImage,
     description,
+    abstract,
     body,
     author,
     publishDate,
@@ -77,6 +82,8 @@ const PostTemplate = ({data}) => {
 
     <PostContainer text>
 
+      <Abstract>{abstract.abstract}</Abstract>
+
       <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
 
       {tags && (<Tags items={tags} />)}
@@ -103,6 +110,9 @@ export const query = graphql`
         sizes(maxWidth: 1800) {
           ...GatsbyContentfulSizes_noBase64
         }
+      }
+      abstract {
+        abstract
       }
       body {
         childMarkdownRemark {
