@@ -4,15 +4,16 @@ import Helmet from 'react-helmet'
 import Img from 'gatsby-image'
 import config from '../utils/siteConfig'
 import ContactForm from '../components/contactform'
+import { Container } from 'semantic-ui-react';
 
-const Wrapper = styled.section`
-  padding: 3em 1.5em;
+
+const Wrapper = styled(Container)`
+  padding: 3em 0;
   margin: 0 auto;
-  max-width: ${props => props.theme.sizes.maxWidthCentered};
 `;
 
 const Title = styled.h1`
-  font-size: 3em;
+  font-size: 2.6em;
   font-weight: 600;
   text-align: center;
   margin: 0 0 1em 0;
@@ -41,7 +42,7 @@ const Contact = ({data}) => {
         <meta property="og:url" content={`${config.siteUrl}/contact/`} />
       </Helmet>
 
-      <Wrapper>
+      <Wrapper text>
         <Title>Contact</Title>
         <Text>
           I am a web developer with almost ten years of experience in creating web applications and services. I can help you design your business infrastructure and your development team management process. I can help you set your testing strategy and build your application's architecture.

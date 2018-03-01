@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
 import Body from '../components/body'
+import { Container } from 'semantic-ui-react';
+
 
 const PageTemplate = ({data}) => {
 
@@ -16,16 +18,16 @@ const PageTemplate = ({data}) => {
   } = data.contentfulPage;
 
   const Title = styled.h1`
-    font-size: 3em;
+    font-size: 2.6em;
     font-weight: 600;
     text-align: center;
     margin: 0 0 2rem 0;
   `;
 
-  const Page = styled.section`
+  const Page = styled(Container)`
     margin: 0 auto;
     max-width: ${props => props.theme.sizes.maxWidthCentered};
-    padding: 3em 1.5em 2em;
+    padding: 3em 0 2em;
   `;
 
   return(
@@ -37,7 +39,7 @@ const PageTemplate = ({data}) => {
       <meta property="og:url" content={`${config.siteUrl + config.pathPrefix}${slug}/`} />
     </Helmet>
 
-    <Page>
+    <Page text>
       <Title>{title}</Title>
       <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
     </Page>

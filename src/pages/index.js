@@ -8,11 +8,11 @@ import { Header, Container, Button } from 'semantic-ui-react';
 
 const Index = ({data}) =>  {
 
-  const Wrapper = styled.section`
+  const Wrapper = styled(Container)`
+    flex: 1;
     height: 100%;
-    padding: 2em 1.5em;
+    padding: 3em 0;
     margin: 0 auto;
-    max-width: ${props => props.theme.sizes.maxWidth};
   `;
 
   const List = styled.ul`
@@ -61,30 +61,26 @@ const Index = ({data}) =>  {
   const Title = styled(Header)`
     &.ui.header {
       font-size: 2.6em;
+      margin-bottom: 1em;
     }
   `;
 
   const posts = data.allContentfulPost.edges;
 
   return (
-    <Wrapper>
-      <Container text>
-
-        <Title as="h1" dividing>{config.siteTitle}</Title>
-
-        {posts && (
-          <List>
-            {posts.map(({ node: post, index }) => (
-              <div key={post.id}>
-                <Header as='h3'><PostHeaderLink to={`/posts/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
-                <p>{post.body.childMarkdownRemark.html.substr(3, 255)} ...</p>
-                <Button><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></Button>
-              </div>
-            ))}
-          </List>
-        )}
-
-      </Container>
+    <Wrapper text>
+      <Title as="h1" textAlign="center">{config.siteTitle}</Title>
+      {posts && (
+        <List>
+          {posts.map(({ node: post, index }) => (
+            <div key={post.id}>
+              <Header as='h3'><PostHeaderLink to={`/posts/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
+              <p>{post.body.childMarkdownRemark.html.substr(3, 255)} ...</p>
+              <Button><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></Button>
+            </div>
+          ))}
+        </List>
+      )}
     </Wrapper>
   )
 }
