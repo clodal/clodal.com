@@ -4,6 +4,7 @@ import Img from 'gatsby-image'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
 import { Header, Container, Button } from 'semantic-ui-react'
+import { Block } from '@onextech/react-semantic-booster'
 
 
 const Index = ({data}) =>  {
@@ -69,10 +70,12 @@ const Index = ({data}) =>  {
 
   return (
     <div>
-      <Container>
-        <Header sub as="h1">{config.siteTitle}</Header>
-        <Title as="h2">{config.siteBio}</Title>
-      </Container>
+      <Block>
+        <Container>
+          <Header sub as="h1">{config.siteTitle}</Header>
+          <Title as="h2">{config.siteBio}</Title>
+        </Container>
+      </Block>
       <Wrapper text>
         {posts && (
           <List>
