@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import Img from 'gatsby-image'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
 import { Header, Container, Button } from 'semantic-ui-react'
@@ -49,7 +48,7 @@ const Index = ({data}) =>  {
   `;
 
   const Subtitle = styled.p`
-    font-size: 1.4706em;
+    font-size: 1.26em;
   `;
 
   const posts = data.allContentfulPost.edges;
@@ -57,7 +56,7 @@ const Index = ({data}) =>  {
   return (
     <Wrapper>
       <Block secondary>
-        <Container>
+        <Container text>
           <Header sub as="h1">{config.siteTitle}</Header>
           <Title as="h2">{config.siteBio}</Title>
           <Subtitle>{config.siteBioDesc}</Subtitle>
