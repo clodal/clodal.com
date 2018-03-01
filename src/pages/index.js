@@ -9,27 +9,9 @@ import { Block } from '@onextech/react-semantic-booster'
 
 const Index = ({data}) =>  {
 
-  const Wrapper = styled(Container)`
+  const Wrapper = styled.div`
     flex: 1;
     height: 100%;
-    padding: 3em 0;
-    margin: 0 auto;
-  `;
-
-  const List = styled.ul`
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    margin: 3em auto;
-    &:after {
-      content: "";
-      @media screen and (min-width: ${props => props.theme.responsive.small}) {
-        flex: 0 0 49%;
-      }
-      @media screen and (min-width: ${props => props.theme.responsive.medium}) {
-        flex: 0 0 32%;
-      }
-    }
   `;
 
   const PostLink = styled(Link)`
@@ -62,34 +44,41 @@ const Index = ({data}) =>  {
   const Title = styled(Header)`
     &.ui.header {
       font-size: 2.6em;
-      margin-bottom: 1em;
+      margin-bottom: 0.1em;
     }
+  `;
+
+  const Subtitle = styled.p`
+    font-size: 1.4706em;
   `;
 
   const posts = data.allContentfulPost.edges;
 
   return (
-    <div>
-      <Block>
+    <Wrapper>
+      <Block secondary>
         <Container>
           <Header sub as="h1">{config.siteTitle}</Header>
           <Title as="h2">{config.siteBio}</Title>
+          <Subtitle>{config.siteBioDesc}</Subtitle>
         </Container>
       </Block>
-      <Wrapper text>
-        {posts && (
-          <List>
-            {posts.map(({ node: post, index }) => (
-              <div key={post.id}>
-                <Header as='h3'><PostHeaderLink to={`/posts/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
-                <p>{post.body.childMarkdownRemark.html.substr(3, 255)} ...</p>
-                <Button><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></Button>
-              </div>
-            ))}
-          </List>
-        )}
-      </Wrapper>
-    </div>
+      <Block>
+        <Container text>
+          {posts && (
+            <ul>
+              {posts.map(({ node: post, index }) => (
+                <li key={post.id}>
+                  <Header as='h3'><PostHeaderLink to={`/posts/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
+                  <p>{post.body.childMarkdownRemark.html.substr(3, 255)} ...</p>
+                  <Button><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></Button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Container>
+      </Block>
+    </Wrapper>
   )
 }
 
