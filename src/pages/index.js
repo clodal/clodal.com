@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
-import { Header, Container, Button } from 'semantic-ui-react';
+import { Header, Container, Button } from 'semantic-ui-react'
 
 
 const Index = ({data}) =>  {
@@ -68,20 +68,25 @@ const Index = ({data}) =>  {
   const posts = data.allContentfulPost.edges;
 
   return (
-    <Wrapper text>
-      <Title as="h1" textAlign="center">{config.siteTitle}</Title>
-      {posts && (
-        <List>
-          {posts.map(({ node: post, index }) => (
-            <div key={post.id}>
-              <Header as='h3'><PostHeaderLink to={`/posts/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
-              <p>{post.body.childMarkdownRemark.html.substr(3, 255)} ...</p>
-              <Button><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></Button>
-            </div>
-          ))}
-        </List>
-      )}
-    </Wrapper>
+    <div>
+      <Container>
+        <Header sub as="h1">{config.siteTitle}</Header>
+        <Title as="h2">{config.siteBio}</Title>
+      </Container>
+      <Wrapper text>
+        {posts && (
+          <List>
+            {posts.map(({ node: post, index }) => (
+              <div key={post.id}>
+                <Header as='h3'><PostHeaderLink to={`/posts/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
+                <p>{post.body.childMarkdownRemark.html.substr(3, 255)} ...</p>
+                <Button><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></Button>
+              </div>
+            ))}
+          </List>
+        )}
+      </Wrapper>
+    </div>
   )
 }
 
