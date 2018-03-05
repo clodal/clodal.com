@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import config from '../utils/siteConfig'
 import { Icon, Header, Container, Button, Divider } from 'semantic-ui-react'
 import { Block } from '@onextech/react-semantic-booster'
+import CasestudyGrid from '../components/CasestudyGrid'
 
 
 const Wrapper = styled.div`
@@ -97,6 +98,8 @@ const PaddedLink = styled(Link)`
 
 const Index = ({ data }) =>  {
   const posts = data.allContentfulPost.edges;
+  const casestudies = data.allContentfulCasestudy.edges;
+
   return (
     <Wrapper>
       <Block spacer={2}>
@@ -109,6 +112,12 @@ const Index = ({ data }) =>  {
             <a href={`//twitter.com/${config.twitterHandle}`} target="_blank"><Icon size="large" name="twitter" /></a>
             <a href={`//linkedin.com/in/${config.linkedinHandle}`} target="_blank"><Icon size="large" name="linkedin" /></a>
           </IconLinks>
+        </Container>
+      </Block>
+
+      <Block>
+        <Container>
+          {casestudies && <CasestudyGrid casestudies={casestudies} />}
         </Container>
       </Block>
 
@@ -170,6 +179,13 @@ export const query = graphql`
             }
           }
           publishDate
+        }
+      }
+    }
+    allContentfulCasestudy(limit: 1000, sort: {fields: [publishDate], order: DESC}) {
+      edges {
+        node {
+          ...CasestudyNodeFragment
         }
       }
     }
