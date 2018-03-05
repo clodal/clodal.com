@@ -5,11 +5,12 @@ import find from "lodash.find"
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import { Grid, Container, Button } from 'semantic-ui-react'
-import { Block } from '@onextech/react-semantic-booster';
+import { Block } from '@onextech/react-semantic-booster'
 import config from '../utils/siteConfig'
 import Tags from '../components/tags'
 import Body from '../components/body'
 import Hero from '../components/hero'
+import PrevNextCards from '../components/PrevNextCards';
 
 
 const PostContainer = styled(Container)`
@@ -149,7 +150,7 @@ const CasestudyTemplate = ({ data }) => {
     tags,
   } = data.contentfulCasestudy;
 
-  const postIndex = find(
+  const casestudyIndex = find(
     data.allContentfulCasestudy.edges,
     ({ node: post }) => post.id === id
   );
@@ -178,24 +179,37 @@ const CasestudyTemplate = ({ data }) => {
 
       {gallery && <CasestudyGallery data={gallery} />}
 
-      <PostContainer text>
-        <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
-      </PostContainer>
+      <Block attached>
+        <PostContainer text>
+          <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
+        </PostContainer>
+      </Block>
 
-      <PostNavigation >
-        {postIndex.previous && (<PreviousLink to={`/portfolio/${postIndex.previous.slug}/`}>Prev Casestudy</PreviousLink>)}
-        {postIndex.next && (<NextLink to={`/portfolio/${postIndex.next.slug}/`}>Next Casestudy</NextLink>)}
-      </PostNavigation>
+      <PrevNextCards index={casestudyIndex} parentSlug="portfolio" />
 
     </div>
   )
 }
 
+export const casestudyIndexNavigationFragment = graphql`
+  fragment CasestudyIndexNavigationFragment on ContentfulCasestudy {
+      id
+      title
+      slug
+      heroImage {
+          title
+          sizes(maxWidth: 1800) {
+              ...GatsbyContentfulSizes_noBase64
+          }
+      }
+  }
+`;
+
 export const query = graphql`
     query casestudyQuery($slug: String!) {
         contentfulCasestudy(slug: {eq: $slug}) {
-            title
             id
+            title
             slug
             heroImage {
                 title
@@ -226,12 +240,10 @@ export const query = graphql`
                     id
                 }
                 previous {
-                    slug
-                    title
+                    ...CasestudyIndexNavigationFragment
                 }
                 next {
-                    slug
-                    title
+                    ...CasestudyIndexNavigationFragment
                 }
             }
         }

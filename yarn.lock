@@ -13,9 +13,9 @@
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@onextech/react-apollo-utils/-/react-apollo-utils-0.3.1.tgz#fe14e7e76a139c24fd662c4e3db482ce5b1d8e85"
 
-"@onextech/react-semantic-booster@^0.6.26":
-  version "0.6.26"
-  resolved "https://registry.yarnpkg.com/@onextech/react-semantic-booster/-/react-semantic-booster-0.6.26.tgz#d3a05bf6e45a7ada520af89ea5522bb905eea0cd"
+"@onextech/react-semantic-booster@^0.6.28":
+  version "0.6.28"
+  resolved "https://registry.yarnpkg.com/@onextech/react-semantic-booster/-/react-semantic-booster-0.6.28.tgz#68a0969f5337ce0f754259a301e96b8af3731a82"
   dependencies:
     "@onextech/react-apollo-utils" "^0.3.1"
     "@storybook/addon-actions" "^3.2.19"
