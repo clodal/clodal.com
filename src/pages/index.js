@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
-import { Icon, Header, Container, Button } from 'semantic-ui-react'
+import { Icon, Header, Container, Button, Divider } from 'semantic-ui-react'
 import { Block } from '@onextech/react-semantic-booster'
 
 
@@ -32,6 +32,16 @@ const PostLink = styled(Link)`
       margin: 1em 0;
     }
   `;
+
+const SectionHeader = styled(Header)`
+  &.ui.header {
+    font-size: 1.6em;
+  }
+`;
+
+const SectionLead = styled.p`
+  font-size: 1.25em;
+`;
 
 const PostHeaderLink = styled(Link)`
     color: ${props => props.theme.colors.base};
@@ -76,6 +86,15 @@ const IconLinks = styled.div`
   }
 `;
 
+const PaddedLink = styled(Link)`
+  display: block;
+  color: inherit;
+  margin-bottom: 3px;
+  &:hover {
+    color: inherit;
+  }
+`;
+
 const Index = ({ data }) =>  {
   const posts = data.allContentfulPost.edges;
   return (
@@ -92,7 +111,8 @@ const Index = ({ data }) =>  {
           </IconLinks>
         </Container>
       </Block>
-      <Block>
+
+      <Block attached>
         <Container text>
           {posts && (
             <PostList>
@@ -107,6 +127,22 @@ const Index = ({ data }) =>  {
           )}
         </Container>
       </Block>
+
+      <Container text>
+        <Divider />
+      </Container>
+
+      <Block textAlign="center" spacer={1.5}>
+        <Container text>
+          <SectionHeader as="h2">I'd love to hear from you</SectionHeader>
+          <SectionLead>Got a project to share? Feel free to get in touch.</SectionLead>
+          <Divider hidden />
+          <ButtonLink primary size="large" circular>
+            <PaddedLink to={`/contact/`}>Message me</PaddedLink>
+          </ButtonLink>
+        </Container>
+      </Block>
+
     </Wrapper>
   )
 }
