@@ -19,6 +19,7 @@ const Menu = () => {
       <Container>
       <SuiMenu.Item link><Link to="/" exact>{config.siteTitle}</Link></SuiMenu.Item>
       <SuiMenu.Menu position="right">
+        <SuiMenu.Item link><Link to="/portfolio/">Portfolio</Link></SuiMenu.Item>
         <SuiMenu.Item link><Link to="/about/">About</Link></SuiMenu.Item>
         <SuiMenu.Item link><Link to="/contact/">Contact</Link></SuiMenu.Item>
       </SuiMenu.Menu>

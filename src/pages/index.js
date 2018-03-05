@@ -2,14 +2,14 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
-import { Header, Container, Button } from 'semantic-ui-react'
+import { Icon, Header, Container, Button } from 'semantic-ui-react'
 import { Block } from '@onextech/react-semantic-booster'
 
 
 const Wrapper = styled.div`
-    flex: 1;
-    height: 100%;
-  `;
+  flex: 1;
+  height: 100%;
+`;
 
 const PostLink = styled(Link)`
     display: flex;
@@ -67,6 +67,15 @@ const ButtonLink = styled(Button)`
     }
   `;
 
+const IconLinks = styled.div`
+  a {
+    color: inherit;
+    &:hover {
+      color: ${props => props.theme.colors.highlight};
+    }
+  }
+`;
+
 const Index = ({ data }) =>  {
   const posts = data.allContentfulPost.edges;
   return (
@@ -76,6 +85,11 @@ const Index = ({ data }) =>  {
           <Header sub as="h1">{config.siteTitle}</Header>
           <Title as="h2">{config.siteBio}</Title>
           <Subtitle>{config.siteBioDesc}</Subtitle>
+          <IconLinks>
+            <a href={`//github.com/${config.githubHandle}`} target="_blank"><Icon size="large" name="github" /></a>
+            <a href={`//twitter.com/${config.twitterHandle}`} target="_blank"><Icon size="large" name="twitter" /></a>
+            <a href={`//linkedin.com/in/${config.linkedinHandle}`} target="_blank"><Icon size="large" name="linkedin" /></a>
+          </IconLinks>
         </Container>
       </Block>
       <Block>

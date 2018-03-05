@@ -55,5 +55,31 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     })
   })
 
-  return Promise.all([loadPosts, loadPages])
+  const loadCasestudies = new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allContentfulCasestudy {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+    `
+    ).then(result => {
+      result.data.allContentfulCasestudy.edges.map(({ node }) => {
+        createPage({
+          path: `portfolio/${node.slug}/`,
+          component: path.resolve(`./src/templates/casestudy.js`),
+          context: {
+            slug: node.slug,
+          },
+        })
+      })
+      resolve()
+    })
+  })
+
+  return Promise.all([loadPosts, loadPages, loadCasestudies])
 };
