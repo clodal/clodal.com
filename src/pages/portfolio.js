@@ -18,7 +18,7 @@ const Title = styled.h1`
   font-size: 3.06em;
   font-weight: 600;
   text-align: center;
-  margin-bottom: .67em;
+  margin-bottom: 0;
 `;
 
 const CardLink = styled(Link)`
@@ -47,7 +47,7 @@ const CasestudyCard = ({ data, expand }) => {
     <div>
       <CardLink to={`/portfolio/${slug}/`}>
         <Card raised fluid>
-          <Img imgStyle={{ padding: '9px' }} sizes={heroImage.sizes} backgroundColor={'#EEE'} />
+          <Img sizes={heroImage.sizes} backgroundColor={'#EEE'} />
           {
             expand &&
             <Card.Content>
@@ -71,7 +71,11 @@ const CasestudyCard = ({ data, expand }) => {
 
 const PortfolioMenu = styled(Menu)`
   &.ui.menu {
-    margin-bottom: 3em;
+    margin-top: .3em;
+    margin-bottom: 2em;
+    .container {
+      justify-content: center;
+    }
     .item {
       opacity: 0.3;
       &:hover, &:active {
@@ -107,9 +111,9 @@ class Portfolio extends React.Component {
         <Block spacer={{ top: 0.7, bottom: 1 }}>
           <Title>Portfolio</Title>
 
-          <PortfolioMenu pointing secondary icon size="huge">
+          <PortfolioMenu secondary icon size="huge">
             <Container>
-              <Menu.Menu position='right'>
+              <Menu.Menu>
                 <Menu.Item name="Show/Hide Info" onClick={this.handleViewToggle}>
                   <Icon name="block layout" />
                   &nbsp;&nbsp;

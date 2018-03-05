@@ -9,11 +9,8 @@ import { Block } from '@onextech/react-semantic-booster';
 import config from '../utils/siteConfig'
 import Tags from '../components/tags'
 import Body from '../components/body'
+import Hero from '../components/hero'
 
-
-const Abstract = styled.p`
-  font-size: 1.26em;
-`;
 
 const PostContainer = styled(Container)`
   padding: 3em 0;
@@ -52,7 +49,27 @@ const NextLink = styled(Link)`
   `;
 
 const Title = styled.h1`
-  font-size: 2.6em;
+  font-size: 2.66em;
+  margin-bottom: 0;
+`;
+
+const HeaderContent = styled.div`
+  margin: 1.5em auto;
+`;
+
+const Abstract = styled.p`
+  font-size: 1.26em;
+  line-height: 1.5;
+  opacity: 0.67;
+`;
+
+const MinimalButton = styled(Button)`
+  &.ui.button {
+    opacity: 0.67;
+    &:hover {
+      opacity: 1;
+    }
+  }
 `;
 
 class CasestudyGallery extends React.Component {
@@ -62,7 +79,11 @@ class CasestudyGallery extends React.Component {
 
   renderViewButton = () => {
     const { expand } = this.state;
-    return <Button onClick={this.handleGalleryView}>{expand ? 'Collapse' : 'Expand'} Gallery</Button>
+    return <MinimalButton
+      size="mini"
+      basic
+      inverted
+      onClick={this.handleGalleryView}>{expand ? 'Collapse' : 'Expand'} Gallery</MinimalButton>
   }
 
   renderDefaultView = () => {
@@ -143,11 +164,15 @@ const CasestudyTemplate = ({ data }) => {
         <meta property="og:image" content={heroImage.sizes.src} />
       </Helmet>
 
-      <Block secondary textAlign="center">
-        <HeaderContainer>
-          <Title>{title}</Title>
-          <Abstract>{abstract.abstract}</Abstract>
+      <Hero title={title} image={heroImage.sizes} height={'50vh'}/>
+
+      <Block textAlign="center">
+        <Title>{title}</Title>
+        <HeaderContainer text>
           <Tags items={tags} />
+          <HeaderContent>
+            <Abstract>{abstract.abstract}</Abstract>
+          </HeaderContent>
         </HeaderContainer>
       </Block>
 
@@ -155,11 +180,12 @@ const CasestudyTemplate = ({ data }) => {
 
       <PostContainer text>
         <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
-        <PostNavigation >
-          {postIndex.previous && (<PreviousLink to={`/portfolio/${postIndex.previous.slug}/`}>Prev Casestudy</PreviousLink>)}
-          {postIndex.next && (<NextLink to={`/portfolio/${postIndex.next.slug}/`}>Next Casestudy</NextLink>)}
-        </PostNavigation>
       </PostContainer>
+
+      <PostNavigation >
+        {postIndex.previous && (<PreviousLink to={`/portfolio/${postIndex.previous.slug}/`}>Prev Casestudy</PreviousLink>)}
+        {postIndex.next && (<NextLink to={`/portfolio/${postIndex.next.slug}/`}>Next Casestudy</NextLink>)}
+      </PostNavigation>
 
     </div>
   )
