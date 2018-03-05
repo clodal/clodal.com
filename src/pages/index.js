@@ -80,7 +80,7 @@ const Index = ({ data }) =>  {
   const posts = data.allContentfulPost.edges;
   return (
     <Wrapper>
-      <Block>
+      <Block spacer={2}>
         <Container text>
           <Header sub as="h1">{config.siteTitle}</Header>
           <Title as="h2">{config.siteBio}</Title>
