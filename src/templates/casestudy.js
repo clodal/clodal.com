@@ -164,8 +164,6 @@ const CasestudyTemplate = ({ data }) => {
         <meta property="og:image" content={heroImage.sizes.src} />
       </Helmet>
 
-      <Hero title={title} image={heroImage.sizes} height={'50vh'}/>
-
       <Block textAlign="center">
         <Title>{title}</Title>
         <HeaderContainer text>
@@ -175,6 +173,8 @@ const CasestudyTemplate = ({ data }) => {
           </HeaderContent>
         </HeaderContainer>
       </Block>
+
+      <Hero image={heroImage.sizes} />
 
       {gallery && <CasestudyGallery data={gallery} />}
 
