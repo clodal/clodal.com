@@ -96,6 +96,10 @@ const PaddedLink = styled(Link)`
   }
 `;
 
+const LargeContainer = styled(Container)`
+  font-size: 1.15rem;
+`;
+
 const Index = ({ data }) =>  {
   const posts = data.allContentfulPost.edges;
   const casestudies = data.allContentfulCasestudy.edges;
@@ -115,10 +119,15 @@ const Index = ({ data }) =>  {
         </Container>
       </Block>
 
-      <Block>
-        <Container>
-          {casestudies && <CasestudyGrid casestudies={casestudies} />}
-        </Container>
+      <Block textAlign="center">
+        <LargeContainer>
+          <SectionHeader as="h2">My Work</SectionHeader>
+          {casestudies && <CasestudyGrid casestudies={casestudies} fullView={false} />}
+          <Divider hidden />
+          <ButtonLink basic circular>
+            <PaddedLink to={`/portfolio/`}>View more</PaddedLink>
+          </ButtonLink>
+        </LargeContainer>
       </Block>
 
       <Block attached>
@@ -158,7 +167,7 @@ const Index = ({ data }) =>  {
 
 export const query = graphql`
   query indexQuery {
-    allContentfulPost(limit: 1000, sort: {fields: [publishDate], order: DESC}) {
+    allContentfulPost(limit: 3, sort: {fields: [publishDate], order: DESC}) {
       edges {
         node {
           title
@@ -182,7 +191,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulCasestudy(limit: 1000, sort: {fields: [publishDate], order: DESC}) {
+    allContentfulCasestudy(limit: 6, sort: {fields: [publishDate], order: DESC}) {
       edges {
         node {
           ...CasestudyNodeFragment

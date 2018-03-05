@@ -75,7 +75,15 @@ const CasestudyCard = ({ casestudy, expand }) => {
 
 class CasestudyGrid extends React.Component {
   state = {
-    fullView: false,
+    fullView: true,
+  }
+
+  componentWillMount() {
+    const { fullView } = this.props;
+    console.log('fullView', fullView);
+    if (typeof fullView != 'undefined') {
+      this.setState({ fullView });
+    }
   }
 
   handleViewToggle = () => this.setState({fullView: !this.state.fullView});
