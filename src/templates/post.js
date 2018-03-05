@@ -1,14 +1,14 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import Img from 'gatsby-image'
 import find from "lodash.find"
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
+import { Container } from 'semantic-ui-react';
 import config from '../utils/siteConfig'
 import Hero from '../components/hero'
 import Tags from '../components/tags'
 import Body from '../components/body'
-import { Container } from 'semantic-ui-react';
+import PrevNextCards from '../components/PrevNextCards';
 
 
 const Abstract = styled.p`
@@ -88,16 +88,27 @@ const PostTemplate = ({data}) => {
 
       {tags && (<Tags items={tags} />)}
 
-      <PostNavigation >
-        {postIndex.previous && (<PreviousLink to={`/posts/${postIndex.previous.slug}/`}>Prev Post</PreviousLink>)}
-        {postIndex.next && (<NextLink to={`/posts/${postIndex.next.slug}/`}>Next Post</NextLink>)}
-      </PostNavigation>
-
     </PostContainer>
+
+    <PrevNextCards index={postIndex} parentSlug="posts" />
 
   </div>
   )
 }
+
+export const postIndexNavigationFragment = graphql`
+    fragment PostIndexNavigationFragment on ContentfulPost {
+        id
+        title
+        slug
+        heroImage {
+            title
+            sizes(maxWidth: 1800) {
+                ...GatsbyContentfulSizes_noBase64
+            }
+        }
+    }
+`;
 
 export const query = graphql`
   query postQuery($slug: String!) {
@@ -128,12 +139,10 @@ export const query = graphql`
           id
         }
         previous {
-          slug
-          title
+          ...PostIndexNavigationFragment
         }
         next {
-          slug
-          title
+          ...PostIndexNavigationFragment
         }
       }
     }
