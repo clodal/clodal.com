@@ -1,17 +1,28 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import find from "lodash.find"
 import Helmet from 'react-helmet'
-import styled from 'styled-components'
-import { Grid, Container, Button } from 'semantic-ui-react'
-import { Block } from '@onextech/react-semantic-booster'
+import styled, { injectGlobal } from 'styled-components'
+import { Grid, Container, Button, Modal, Header } from 'semantic-ui-react'
+import { Block, MediaCss } from '@onextech/react-semantic-booster'
 import config from '../utils/siteConfig'
 import Tags from '../components/tags'
 import Body from '../components/body'
-import Hero from '../components/hero'
-import PrevNextCards from '../components/PrevNextCards';
+import PrevNextCards from '../components/PrevNextCards'
 
+
+const lightboxClassName = 'lightbox'
+injectGlobal`
+  .ui.page.modals.dimmer.transition.visible.active {
+    display: flex !important;
+  }
+  .${lightboxClassName}.ui.modal.transition.visible.active {
+    margin-top: 0 !important;
+  }
+  .${lightboxClassName}.ui.scrolling.modal.transition.visible.active {
+    margin-top: 63px !important;
+  }
+`;
 
 const PostContainer = styled(Container)`
   padding: 3em 0;
@@ -20,34 +31,6 @@ const PostContainer = styled(Container)`
 const HeaderContainer = styled(Container)`
   font-size: 1.15em;
 `;
-
-const PostNavigation = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-
-    a {
-      background: ${props => props.theme.colors.base};
-      color: white;
-      padding: 1em;
-      border-radius: 2px;
-      text-decoration: none;
-      transition: .2s;
-      &:hover {
-        background: ${props => props.theme.colors.highlight};
-      }
-    }
-  `;
-
-const PreviousLink = styled(Link)`
-    margin-right: auto;
-    order: 1;
-  `;
-
-const NextLink = styled(Link)`
-    margin-left: auto;
-    order: 2;
-  `;
 
 const Title = styled.h1`
   font-size: 2.66em;
@@ -66,6 +49,9 @@ const Abstract = styled.p`
 
 const MinimalButton = styled(Button)`
   &.ui.button {
+    display: none;
+    ${MediaCss.min.sm`display: initial;`}
+    
     opacity: 0.67;
     &:hover {
       opacity: 1;
@@ -73,10 +59,22 @@ const MinimalButton = styled(Button)`
   }
 `;
 
+const ImgZoomer = styled.div`
+  cursor: zoom-in;
+`;
+
 class CasestudyGallery extends React.Component {
-  state = { expand: false }
+  state = {
+    expand: false,
+    zoom: false,
+    zoomImg: '',
+  }
 
   handleGalleryView = () => this.setState({ expand: !this.state.expand })
+
+  handleOpenImgZoom = (img) => this.setState({ zoom: true, zoomImg: img })
+
+  handleCloseImgZoom = () => this.setState({ zoom: false, zoomImg: '' })
 
   renderViewButton = () => {
     const { expand } = this.state;
@@ -89,14 +87,33 @@ class CasestudyGallery extends React.Component {
 
   renderDefaultView = () => {
     const { data } = this.props;
+    const { zoom, zoomImg } = this.state;
+    const Lightbox = ({ img }) => {
+      return (
+        <Modal
+          className={lightboxClassName}
+          onUnmount={this.handleCloseImgZoom}
+          defaultOpen
+          closeIcon>
+          <div style={{ width: '100%' }}>
+            <Img sizes={img.sizes} />
+          </div>
+        </Modal>
+      )
+    }
     return (
       <Block inverted spacer={{ top: 0, bottom: 1 }}>
+        {zoom && zoomImg && <Lightbox img={zoomImg} />}
         <Grid container stackable columns={3}>
           <Grid.Row>
             {
               data &&
               data.map(img => (
-                <Grid.Column key={img.id}><Img sizes={img.sizes} /></Grid.Column>
+                <Grid.Column key={img.id}>
+                  <ImgZoomer onClick={() => this.handleOpenImgZoom(img)}>
+                    <Img sizes={img.sizes} />
+                  </ImgZoomer>
+                </Grid.Column>
               ))
             }
           </Grid.Row>
@@ -175,7 +192,7 @@ const CasestudyTemplate = ({ data }) => {
         </HeaderContainer>
       </Block>
 
-      <Hero image={heroImage.sizes} />
+      {/*<Hero image={heroImage.sizes} />*/}
 
       {gallery && <CasestudyGallery data={gallery} />}
 
