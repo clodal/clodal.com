@@ -5,6 +5,7 @@ import config from '../utils/siteConfig'
 import { Icon, Header, Container, Button, Divider } from 'semantic-ui-react'
 import { Block } from '@onextech/react-semantic-booster'
 import CasestudyGrid from '../components/CasestudyGrid'
+import SocialIconLinks from '../components/SocialIconLinks';
 
 
 const Wrapper = styled.div`
@@ -78,15 +79,6 @@ const ButtonLink = styled(Button)`
     }
   `;
 
-const IconLinks = styled.div`
-  a {
-    color: inherit;
-    &:hover {
-      color: ${props => props.theme.colors.highlight};
-    }
-  }
-`;
-
 const PaddedLink = styled(Link)`
   display: block;
   color: inherit;
@@ -111,21 +103,17 @@ const Index = ({ data }) =>  {
           <Header sub as="h1">{config.siteTitle}</Header>
           <Title as="h2">{config.siteBio}</Title>
           <Subtitle>{config.siteBioDesc}</Subtitle>
-          <IconLinks>
-            <a href={`//github.com/${config.githubHandle}`} target="_blank"><Icon size="large" name="github" /></a>
-            <a href={`//twitter.com/${config.twitterHandle}`} target="_blank"><Icon size="large" name="twitter" /></a>
-            <a href={`//linkedin.com/in/${config.linkedinHandle}`} target="_blank"><Icon size="large" name="linkedin" /></a>
-          </IconLinks>
+          <SocialIconLinks />
         </Container>
       </Block>
 
       <Block textAlign="center">
         <LargeContainer>
           <SectionHeader as="h2">My Work</SectionHeader>
-          {casestudies && <CasestudyGrid casestudies={casestudies} fullView={false} />}
+          {casestudies && <CasestudyGrid casestudies={casestudies} />}
           <Divider hidden />
           <ButtonLink basic circular>
-            <PaddedLink to={`/portfolio/`}>View more</PaddedLink>
+            <PaddedLink to={`/portfolio/`}>See more</PaddedLink>
           </ButtonLink>
         </LargeContainer>
       </Block>
