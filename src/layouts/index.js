@@ -33,7 +33,7 @@ export const menu = [ // eslint-disable-line import/prefer-default-export
       { name: 'Portfolio', to: '/portfolio' },
       { name: 'Blog', to: '/blog' },
       { name: 'About', to: '/about' },
-      { name: 'Contact', to: '/contact', button: { primary: true } },
+      { name: 'Contact', to: '/contact', button: { primary: true, circular: true } },
     ],
   },
 ];

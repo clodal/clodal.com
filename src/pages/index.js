@@ -121,7 +121,7 @@ const Index = ({ data }) =>  {
           <SectionHeader as="h2">I'd love to hear from you</SectionHeader>
           <SectionLead>Got a project to share? Feel free to get in touch.</SectionLead>
           <Divider hidden />
-          <ButtonLink primary size="large" circular>
+          <ButtonLink primary size="huge" circular>
             <PaddedLink to={`/contact/`}>Message me</PaddedLink>
           </ButtonLink>
         </Container>
