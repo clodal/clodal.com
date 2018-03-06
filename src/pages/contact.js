@@ -30,25 +30,22 @@ const Text = styled.p`
   }
 `;
 
-const Contact = ({data}) => {
+const Contact = ({ data }) => {
 
   return(
     <div>
-
       <Helmet>
         <title>{`Contact - ${config.siteTitle}`}</title>
         <meta property="og:title" content={`Contact - ${config.siteTitle}`} />
         <meta property="og:url" content={`${config.siteUrl}/contact/`} />
       </Helmet>
-
       <Wrapper text>
         <Title>Contact</Title>
         <Text>
           {config.contactDesc}
         </Text>
-        <ContactForm/>
+        <ContactForm />
       </Wrapper>
-
     </div>
   )
 }

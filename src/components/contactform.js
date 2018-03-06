@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import 'whatwg-fetch'
 import Promise from 'promise-polyfill'
 if (typeof window !== `undefined`) {if (!window.Promise) {window.Promise = Promise;}}
+import { Button } from 'semantic-ui-react';
 
 const Form = styled.form`
   margin: 0 auto;
@@ -69,16 +70,6 @@ const Message = styled.textarea`
   resize: vertical;
 `
 
-const Submit = styled.input`
-  background: ${props => props.theme.colors.base} !important;
-  color: white !important;
-  cursor: pointer;
-  transition: all .2s;
-  &:hover {
-    background: ${props => props.theme.colors.highlight} !important;
-  }
-`
-
 const encode = (data) => {
   return Object.keys(data)
    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -88,7 +79,7 @@ const encode = (data) => {
 class ContactForm extends React.Component {
 
   constructor (props) {
-    super(props)
+    super (props)
     this.state = {
       name: '',
       email: '',
@@ -134,7 +125,7 @@ class ContactForm extends React.Component {
         <Name name="name" type="text" placeholder="Full Name" value={this.state.name} onChange={this.handleInputChange} required/>
         <Email name="email" type="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange} required/>
         <Message name="message" type="text" placeholder="Message" value={this.state.message} onChange={this.handleInputChange} required/>
-        <Submit name="submit" type="submit" value="Send" />
+        <Button type="submit" primary circular size="large">Send</Button>
 
       </Form>
 
