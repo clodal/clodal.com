@@ -25,14 +25,14 @@ export const menu = [ // eslint-disable-line import/prefer-default-export
     position: 'left',
     content: [
       { name: 'Home', to: '/' },
-      { name: 'About', to: '/about' },
-      { name: 'Blog', to: '/blog' },
-      { name: 'Portfolio', to: '/portfolio' },
     ],
   },
   {
     position: 'right',
     content: [
+      { name: 'Portfolio', to: '/portfolio' },
+      { name: 'Blog', to: '/blog' },
+      { name: 'About', to: '/about' },
       { name: 'Contact', to: '/contact', button: { primary: true } },
     ],
   },

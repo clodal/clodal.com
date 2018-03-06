@@ -28,11 +28,13 @@ const Title = styled(Header)`
     &.ui.header {
       font-size: 2.6em;
       margin-bottom: 0.1em;
+      margin-top: .25em;
     }
   `;
 
 const Subtitle = styled.p`
     font-size: 1.26em;
+    opacity: .46;
   `;
 
 const ButtonLink = styled(Button)`
@@ -62,18 +64,28 @@ const ViewMoreContainer = styled.div`
   margin-top: 2em;
 `;
 
+const HeroContainer = styled.div`
+  margin-bottom: 2em;
+`;
+
+const CaptionTitle = styled(Header)`
+  letter-spacing: 1px;
+`;
+
 const Index = ({ data }) =>  {
   const posts = data.allContentfulPost.edges;
   const casestudies = data.allContentfulCasestudy.edges;
 
   return (
     <Wrapper>
-      <Block spacer={2}>
+      <Block spacer={2} textAlign="center">
         <Container text>
-          <Header sub as="h1">{config.siteTitle}</Header>
-          <Title as="h2">{config.siteBio}</Title>
-          <Subtitle>{config.siteBioDesc}</Subtitle>
-          <SocialIconLinks />
+          <HeroContainer>
+            <CaptionTitle sub as="h1">{config.siteTitle}</CaptionTitle>
+            <Title as="h2">{config.siteBio}</Title>
+            <Subtitle>{config.siteBioDesc}</Subtitle>
+          </HeroContainer>
+          <SocialIconLinks relaxed={true} />
         </Container>
       </Block>
 
