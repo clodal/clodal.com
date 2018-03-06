@@ -1,26 +1,53 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import styled, {ThemeProvider} from 'styled-components'
+import { SiteNav } from '@onextech/react-semantic-booster'
 import config from '../utils/siteConfig'
 import theme from '../styles/theme'
-import Menu from '../components/menu'
 import Footer from '../components/footer'
 import favicon from '../images/favicon.ico'
 import '../styles/global'
 import '../../semantic/dist/semantic.css'
 
 
-const Site = styled.div`
-  min-height: 100%;
+const FlexWrapper = styled.div`
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
-  justify-content: space-between;
 `;
+
+const FlexContent = styled.div`
+  flex: 1;
+`;
+
+export const menu = [ // eslint-disable-line import/prefer-default-export
+  {
+    position: 'left',
+    content: [
+      { name: 'Home', to: '/' },
+      { name: 'About', to: '/about' },
+      { name: 'Portfolio', to: '/portfolio' },
+    ],
+  },
+  {
+    position: 'right',
+    content: [
+      { name: 'Contact', to: '/contact', button: { primary: true } },
+    ],
+  },
+];
+
+export const menuProps = {
+  pointing: true,
+  secondary: true,
+  container: true,
+  spacer: 2,
+};
 
 const Template = ({ children }) => {
 
     return (
-      <div style={{ height: '100%' }}>
+      <div>
 
         <Helmet>
           <title>{config.siteTitle}</title>
@@ -36,11 +63,14 @@ const Template = ({ children }) => {
         </Helmet>
 
         <ThemeProvider theme={theme}>
-          <Site>
-            <Menu/>
-            {children()}
-            <Footer/>
-          </Site>
+          <SiteNav menu={menu} menuProps={menuProps}>
+            <FlexWrapper>
+              <FlexContent>
+                {children()}
+              </FlexContent>
+              <Footer/>
+            </FlexWrapper>
+          </SiteNav>
         </ThemeProvider>
 
       </div>

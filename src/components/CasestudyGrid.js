@@ -80,7 +80,6 @@ class CasestudyGrid extends React.Component {
 
   componentWillMount() {
     const { fullView } = this.props;
-    console.log('fullView', fullView);
     if (typeof fullView != 'undefined') {
       this.setState({ fullView });
     }
