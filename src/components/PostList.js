@@ -52,9 +52,9 @@ const PostList = ({ posts }) => (
   <Wrapper>
     {posts.map(({ node: post, index }) => (
       <li key={post.id}>
-        <Header as='h3'><PostHeaderLink to={`/posts/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
+        <Header as='h3'><PostHeaderLink to={`/blog/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
         <p>{post.abstract.abstract.substr(0,50)} ...</p>
-        <ButtonLink><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></ButtonLink>
+        <ButtonLink><PostLink to={`/blog/${post.slug}/`}>Read More</PostLink></ButtonLink>
       </li>
     ))}
   </Wrapper>

@@ -74,7 +74,7 @@ const PostTemplate = ({data}) => {
     <Helmet>
       <title>{`${title} - ${config.siteTitle}`}</title>
       <meta property="og:title" content={`${title} - ${config.siteTitle}`} />
-      <meta property="og:url" content={`${config.siteUrl + config.pathPrefix}/posts/${slug}/`} />
+      <meta property="og:url" content={`${config.siteUrl + config.pathPrefix}/blog/${slug}/`} />
       <meta property="og:image" content={heroImage.sizes.src} />
     </Helmet>
 
