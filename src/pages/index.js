@@ -92,7 +92,7 @@ const Index = ({ data }) =>  {
       <Block textAlign="center">
         <LargeContainer>
           <SectionHeader as="h2">My Work</SectionHeader>
-          {casestudies && <CasestudyGrid casestudies={casestudies} />}
+          {casestudies && <CasestudyGrid fullView={false} casestudies={casestudies} />}
           <ViewMoreContainer>
             <ButtonLink basic circular>
               <PaddedLink to="/portfolio">View more</PaddedLink>

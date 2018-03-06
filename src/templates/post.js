@@ -90,7 +90,7 @@ const PostTemplate = ({data}) => {
 
     </PostContainer>
 
-    <PrevNextCards index={postIndex} parentSlug="posts" />
+    <PrevNextCards index={postIndex} parentSlug="posts" cardType="Read" />
 
   </div>
   )

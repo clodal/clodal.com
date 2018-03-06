@@ -202,7 +202,7 @@ const CasestudyTemplate = ({ data }) => {
         </PostContainer>
       </Block>
 
-      <PrevNextCards index={casestudyIndex} parentSlug="portfolio" />
+      <PrevNextCards index={casestudyIndex} parentSlug="portfolio" cardType="Project" />
 
     </div>
   )
