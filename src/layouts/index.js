@@ -26,6 +26,7 @@ export const menu = [ // eslint-disable-line import/prefer-default-export
     content: [
       { name: 'Home', to: '/' },
       { name: 'About', to: '/about' },
+      { name: 'Blog', to: '/blog' },
       { name: 'Portfolio', to: '/portfolio' },
     ],
   },

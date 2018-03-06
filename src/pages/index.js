@@ -5,35 +5,14 @@ import config from '../utils/siteConfig'
 import { Icon, Header, Container, Button, Divider } from 'semantic-ui-react'
 import { Block } from '@onextech/react-semantic-booster'
 import CasestudyGrid from '../components/CasestudyGrid'
-import SocialIconLinks from '../components/SocialIconLinks';
+import PostList from '../components/PostList'
+import SocialIconLinks from '../components/SocialIconLinks'
 
 
 const Wrapper = styled.div`
   flex: 1;
   height: 100%;
 `;
-
-const PostLink = styled(Link)`
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-    flex: 0 1 100%;
-    color: ${props => props.theme.colors.base};
-    text-decoration: none;
-
-    div {
-      flex-grow: 1;
-      width: 100%;
-      height: 100%;
-    }
-
-    h3 {
-      font-weight: 600;
-      text-transform: capitalize;
-      text-align: center;
-      margin: 1em 0;
-    }
-  `;
 
 const SectionHeader = styled(Header)`
   &.ui.header {
@@ -45,11 +24,6 @@ const SectionLead = styled.p`
   font-size: 1.25em;
 `;
 
-const PostHeaderLink = styled(Link)`
-    color: ${props => props.theme.colors.base};
-    font-size: 1.433em; 
-  `;
-
 const Title = styled(Header)`
     &.ui.header {
       font-size: 2.6em;
@@ -59,15 +33,6 @@ const Title = styled(Header)`
 
 const Subtitle = styled.p`
     font-size: 1.26em;
-  `;
-
-const PostList = styled.ul`
-    li {
-      margin-bottom: 4.5em;
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
   `;
 
 const ButtonLink = styled(Button)`
@@ -92,6 +57,11 @@ const LargeContainer = styled(Container)`
   font-size: 1.15rem;
 `;
 
+const ViewMoreContainer = styled.div`
+  text-align: center;
+  margin-top: 2em;
+`;
+
 const Index = ({ data }) =>  {
   const posts = data.allContentfulPost.edges;
   const casestudies = data.allContentfulCasestudy.edges;
@@ -111,26 +81,22 @@ const Index = ({ data }) =>  {
         <LargeContainer>
           <SectionHeader as="h2">My Work</SectionHeader>
           {casestudies && <CasestudyGrid casestudies={casestudies} />}
-          <Divider hidden />
-          <ButtonLink basic circular>
-            <PaddedLink to={`/portfolio/`}>See more</PaddedLink>
-          </ButtonLink>
+          <ViewMoreContainer>
+            <ButtonLink basic circular>
+              <PaddedLink to="/portfolio">View more</PaddedLink>
+            </ButtonLink>
+          </ViewMoreContainer>
         </LargeContainer>
       </Block>
 
       <Block attached>
         <Container text>
-          {posts && (
-            <PostList>
-              {posts.map(({ node: post, index }) => (
-                <li key={post.id}>
-                  <Header as='h3'><PostHeaderLink to={`/posts/${post.slug}/`}>{post.title}</PostHeaderLink></Header>
-                  <p>{post.abstract.abstract.substr(0,50)} ...</p>
-                  <ButtonLink><PostLink to={`/posts/${post.slug}/`}>Read More</PostLink></ButtonLink>
-                </li>
-              ))}
-            </PostList>
-          )}
+          {posts && <PostList posts={posts} />}
+          <ViewMoreContainer>
+            <ButtonLink basic circular>
+              <PaddedLink to="/blog">View more</PaddedLink>
+            </ButtonLink>
+          </ViewMoreContainer>
         </Container>
       </Block>
 
@@ -158,24 +124,7 @@ export const query = graphql`
     allContentfulPost(limit: 3, sort: {fields: [publishDate], order: DESC}) {
       edges {
         node {
-          title
-          id
-          slug
-          heroImage {
-            title
-            sizes(maxWidth: 1800) {
-              ...GatsbyContentfulSizes_noBase64
-            }
-          }
-          abstract {
-            abstract
-          }
-          body {
-            childMarkdownRemark {
-              html
-            }
-          }
-          publishDate
+          ...PostNodeFragment
         }
       }
     }
