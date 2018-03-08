@@ -221,31 +221,7 @@ export const casestudyIndexNavigationFragment = graphql`
 export const query = graphql`
     query casestudyQuery($slug: String!) {
         contentfulCasestudy(slug: {eq: $slug}) {
-            id
-            title
-            slug
-            heroImage {
-                title
-                sizes(maxWidth: 1800) {
-                    ...GatsbyContentfulSizes_noBase64
-                }
-            }
-            gallery {
-                id
-                sizes(maxWidth: 1800) {
-                    ...GatsbyContentfulSizes_noBase64
-                }
-            }
-            abstract {
-                abstract
-            }
-            body {
-                childMarkdownRemark {
-                    html
-                }
-            }
-            publishDate
-            tags
+            ...CasestudyNodeFragment
         }
         allContentfulCasestudy(limit: 1000, sort: { fields: [publishDate], order: DESC })  {
             edges {

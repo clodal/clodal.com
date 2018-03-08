@@ -15,7 +15,7 @@ const Abstract = styled.p`
   font-size: 1.26em;
 `;
 
-const PostTemplate = ({data}) => {
+const PostTemplate = ({ data }) => {
 
   const {
     title,

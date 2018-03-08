@@ -129,6 +129,12 @@ export const CasestudyNodeFragment = graphql`
                 ...GatsbyContentfulSizes_noBase64
             }
         }
+        gallery {
+            id
+            sizes(maxWidth: 1800) {
+                ...GatsbyContentfulSizes_noBase64
+            }
+        }
         abstract {
             abstract
         }
