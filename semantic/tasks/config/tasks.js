@@ -130,7 +130,6 @@ module.exports = {
     rename: {
       minJS     : { extname : '.min.js' },
       minCSS    : { extname : '.min.css' },
-      moduleCSS    : { extname : '.module.css' },
       rtlCSS    : { extname : '.rtl.css' },
       rtlMinCSS : { extname : '.rtl.min.css' }
     },

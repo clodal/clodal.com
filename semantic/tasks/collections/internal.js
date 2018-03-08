@@ -184,7 +184,7 @@ module.exports = function(gulp) {
   });
 
   gulp.task('package compressed docs css', function() {
-    return gulp.src(docsOutput.uncompressed + '/**/' + globs.components + globs.ignored + '.zcss')
+    return gulp.src(docsOutput.uncompressed + '/**/' + globs.components + globs.ignored + '.css')
       .pipe(dedupe())
       .pipe(plumber())
       .pipe(replace(assets.uncompressed, assets.packaged))

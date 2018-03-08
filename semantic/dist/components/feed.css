@@ -39,7 +39,7 @@
       -ms-flex-direction: row;
           flex-direction: row;
   width: 100%;
-  padding: 0.1725rem 0em;
+  padding: 0.21428571rem 0em;
   margin: 0em;
   background: none;
   border-top: none;
@@ -80,7 +80,7 @@
   border-radius: 500rem;
 }
 .ui.feed > .event > .label + .content {
-  margin: 0.5em 0em 0.2875em 1.15em;
+  margin: 0.5em 0em 0.35714286em 1.14285714em;
 }
 
 /*--------------
@@ -116,7 +116,7 @@
   margin: -0.5rem 0em 0em;
   padding: 0em;
   font-weight: normal;
-  font-size: 0.9775em;
+  font-size: 1em;
   font-style: normal;
   color: rgba(0, 0, 0, 0.4);
 }
@@ -127,7 +127,7 @@
 
 .ui.feed > .event > .content .summary {
   margin: 0em;
-  font-size: 0.9775em;
+  font-size: 1em;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.87);
 }
@@ -169,7 +169,7 @@
   display: inline-block;
   float: none;
   font-weight: normal;
-  font-size: 0.8625em;
+  font-size: 0.85714286em;
   font-style: normal;
   margin: 0em 0em 0em 0.5em;
   padding: 0em;
@@ -198,7 +198,7 @@
 .ui.feed > .event > .content .extra.text {
   padding: 0em;
   border-left: none;
-  font-size: 0.9775em;
+  font-size: 1em;
   max-width: 500px;
   line-height: 1.4285em;
 }
@@ -209,7 +209,7 @@
 
 .ui.feed > .event > .content .meta {
   display: inline-block;
-  font-size: 0.8625em;
+  font-size: 0.85714286em;
   margin: 0.5em 0em 0em;
   background: none;
   border: none;
@@ -273,13 +273,13 @@
 *******************************/
 
 .ui.small.feed {
-  font-size: 0.92rem;
+  font-size: 0.92857143rem;
 }
 .ui.feed {
-  font-size: 0.9775rem;
+  font-size: 1rem;
 }
 .ui.large.feed {
-  font-size: 1.15rem;
+  font-size: 1.14285714rem;
 }
 
 

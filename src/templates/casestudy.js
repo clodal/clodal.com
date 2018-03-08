@@ -11,16 +11,9 @@ import Body from '../components/body'
 import PrevNextCards from '../components/PrevNextCards'
 
 
-const lightboxClassName = 'lightbox'
 injectGlobal`
   .ui.page.modals.dimmer.transition.visible.active {
     display: flex !important;
-  }
-  .${lightboxClassName}.ui.modal.transition.visible.active {
-    margin-top: 0 !important;
-  }
-  .${lightboxClassName}.ui.scrolling.modal.transition.visible.active {
-    margin-top: 63px !important;
   }
 `;
 
@@ -59,27 +52,28 @@ const MinimalButton = styled(Button)`
   }
 `;
 
-const ImgZoomer = styled.div`
-  cursor: zoom-in;
+const LightboxModal = styled(Modal)`
+  &.ui.modal { position: relative; }
+  &.ui.modal.transition.visible.active:not(.scrolling) { margin-top: 0 !important; }
+`;
+
+const LightboxTrigger = styled.div`
+  cursor: pointer;
   ${MediaCss.min.sm`
+    margin-bottom: 2em;
     max-height: 250px;
     overflow: hidden;
-    margin-bottom: 2em;
   `}
 `;
+
+const LightboxContent = styled.div`width: 100%;`;
 
 class CasestudyGallery extends React.Component {
   state = {
     expand: false,
-    zoom: false,
-    zoomImg: '',
   }
 
   handleGalleryView = () => this.setState({ expand: !this.state.expand })
-
-  handleOpenImgZoom = (img) => this.setState({ zoom: true, zoomImg: img })
-
-  handleCloseImgZoom = () => this.setState({ zoom: false, zoomImg: '' })
 
   renderViewButton = () => {
     const { expand } = this.state;
@@ -92,32 +86,28 @@ class CasestudyGallery extends React.Component {
 
   renderDefaultView = () => {
     const { data } = this.props;
-    const { zoom, zoomImg } = this.state;
+
     const Lightbox = ({ img }) => {
       return (
-        <Modal
-          className={lightboxClassName}
-          onUnmount={this.handleCloseImgZoom}
-          defaultOpen
+        <LightboxModal
+          trigger={<LightboxTrigger><Img sizes={img.sizes} /></LightboxTrigger>}
           closeIcon>
-          <div style={{ width: '100%' }}>
+          <LightboxContent>
             <Img sizes={img.sizes} />
-          </div>
-        </Modal>
+          </LightboxContent>
+        </LightboxModal>
       )
     }
+
     return (
       <Block inverted spacer={{ top: 0, bottom: 1 }}>
-        {zoom && zoomImg && <Lightbox img={zoomImg} />}
         <Grid container stackable columns={3}>
           <Grid.Row>
             {
               data &&
               data.map(img => (
                 <Grid.Column key={img.id}>
-                  <ImgZoomer onClick={() => this.handleOpenImgZoom(img)}>
-                    <Img sizes={img.sizes} />
-                  </ImgZoomer>
+                  <Lightbox img={img} />
                 </Grid.Column>
               ))
             }
@@ -212,7 +202,7 @@ const CasestudyTemplate = ({ data }) => {
 }
 
 export const casestudyIndexNavigationFragment = graphql`
-  fragment CasestudyIndexNavigationFragment on ContentfulCasestudy {
+    fragment CasestudyIndexNavigationFragment on ContentfulCasestudy {
       id
       title
       slug

@@ -234,28 +234,28 @@
 --------------------*/
 
 .ui.mini.comments {
-  font-size: 0.805rem;
+  font-size: 0.78571429rem;
 }
 .ui.tiny.comments {
-  font-size: 0.8625rem;
+  font-size: 0.85714286rem;
 }
 .ui.small.comments {
-  font-size: 0.92rem;
+  font-size: 0.92857143rem;
 }
 .ui.comments {
-  font-size: 0.9775rem;
+  font-size: 1rem;
 }
 .ui.large.comments {
-  font-size: 1.15rem;
+  font-size: 1.14285714rem;
 }
 .ui.big.comments {
-  font-size: 1.265rem;
+  font-size: 1.28571429rem;
 }
 .ui.huge.comments {
-  font-size: 1.4375rem;
+  font-size: 1.42857143rem;
 }
 .ui.massive.comments {
-  font-size: 1.725rem;
+  font-size: 1.71428571rem;
 }
 
 
