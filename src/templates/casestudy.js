@@ -70,7 +70,7 @@ const LightboxContent = styled.div`width: 100%;`;
 
 class CasestudyGallery extends React.Component {
   state = {
-    expand: false,
+    expand: true,
   }
 
   handleGalleryView = () => this.setState({ expand: !this.state.expand })
@@ -189,11 +189,14 @@ const CasestudyTemplate = ({ data }) => {
 
       {gallery && <CasestudyGallery data={gallery} />}
 
-      <Block attached>
-        <PostContainer text>
-          <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
-        </PostContainer>
-      </Block>
+      {
+        body &&
+        <Block attached>
+          <PostContainer text>
+            <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
+          </PostContainer>
+        </Block>
+      }
 
       <PrevNextCards index={casestudyIndex} parentSlug="portfolio" cardType="Project" />
 
