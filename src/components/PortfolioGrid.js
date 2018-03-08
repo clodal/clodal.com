@@ -32,7 +32,7 @@ const PortfolioMenu = styled(Menu)`
   }
 `;
 
-const CasestudyCard = ({ casestudy, expand }) => {
+const PortfolioCard = ({ casestudy, expand }) => {
   const {
     heroImage,
     title,
@@ -73,7 +73,7 @@ const CasestudyCard = ({ casestudy, expand }) => {
   )
 }
 
-class CasestudyGrid extends React.Component {
+class PortfolioGrid extends React.Component {
   state = {
     fullView: true,
   }
@@ -107,7 +107,7 @@ class CasestudyGrid extends React.Component {
           <Grid.Row>
             {casestudies.map(({node: casestudy}) => (
               <Grid.Column key={casestudy.id}>
-                <CasestudyCard casestudy={casestudy} expand={fullView}/>
+                <PortfolioCard casestudy={casestudy} expand={fullView}/>
               </Grid.Column>
             ))}
           </Grid.Row>
@@ -141,5 +141,4 @@ export const CasestudyNodeFragment = graphql`
     }
 `;
 
-
-export default CasestudyGrid;
+export default PortfolioGrid;

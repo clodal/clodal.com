@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import { Container } from 'semantic-ui-react'
 import { Block } from '@onextech/react-semantic-booster'
 import config from '../utils/siteConfig'
-import CasestudyGrid from '../components/CasestudyGrid';
+import PortfolioGrid from '../components/PortfolioGrid';
 
 
 const Wrapper = styled.div`
@@ -33,7 +33,7 @@ const Portfolio = ({ data }) => {
         <Title>Portfolio</Title>
 
         <Container>
-          {casestudies && <CasestudyGrid casestudies={casestudies} />}
+          {casestudies && <PortfolioGrid casestudies={casestudies} />}
         </Container>
       </Block>
     </Wrapper>

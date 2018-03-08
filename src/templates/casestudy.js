@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 import find from "lodash.find"
 import Helmet from 'react-helmet'
 import styled, { injectGlobal } from 'styled-components'
-import { Grid, Container, Button, Modal, Header } from 'semantic-ui-react'
+import { Grid, Container, Button, Modal } from 'semantic-ui-react'
 import { Block, MediaCss } from '@onextech/react-semantic-booster'
 import config from '../utils/siteConfig'
 import Tags from '../components/tags'
@@ -61,6 +61,9 @@ const MinimalButton = styled(Button)`
 
 const ImgZoomer = styled.div`
   cursor: zoom-in;
+  margin-bottom: 2em;
+  overflow: hidden;
+  ${MediaCss.min.sm`max-height: 250px;`}
 `;
 
 class CasestudyGallery extends React.Component {
@@ -191,8 +194,6 @@ const CasestudyTemplate = ({ data }) => {
           </HeaderContent>
         </HeaderContainer>
       </Block>
-
-      {/*<Hero image={heroImage.sizes} />*/}
 
       {gallery && <CasestudyGallery data={gallery} />}
 

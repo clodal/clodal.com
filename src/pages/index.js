@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import config from '../utils/siteConfig'
 import { Icon, Header, Container, Button, Divider } from 'semantic-ui-react'
 import { Block } from '@onextech/react-semantic-booster'
-import CasestudyGrid from '../components/CasestudyGrid'
+import PortfolioGrid from '../components/PortfolioGrid'
 import PostList from '../components/PostList'
 import SocialIconLinks from '../components/SocialIconLinks'
 
@@ -92,7 +92,7 @@ const Index = ({ data }) =>  {
       <Block textAlign="center">
         <LargeContainer>
           <SectionHeader as="h2">My Work</SectionHeader>
-          {casestudies && <CasestudyGrid fullView={false} casestudies={casestudies} />}
+          {casestudies && <PortfolioGrid fullView={false} casestudies={casestudies} />}
           <ViewMoreContainer>
             <ButtonLink basic circular>
               <PaddedLink to="/portfolio">View more</PaddedLink>
