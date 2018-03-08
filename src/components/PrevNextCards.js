@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { Grid } from '@onextech/react-semantic-booster';
+import { Block, Grid } from '@onextech/react-semantic-booster';
 import PrevNextCard from './PrevNextCard'
 
 
@@ -16,12 +16,14 @@ const PrevNextCards = ({ index, parentSlug, cardType }) => {
       {index.next && !index.previous && <PrevNextCard data={index.next} direction="next" {...prevNextCardProps} />}
       {
         index.previous && index.next &&
-        <Grid columns="equal" stackable fluid attached>
-          <Grid.Row>
-            <Grid.Column><PrevNextCard data={index.previous} direction="previous" {...prevNextCardProps} /></Grid.Column>
-            <Grid.Column><PrevNextCard data={index.next} direction="next" {...prevNextCardProps} /></Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <Block spacer={0}>
+          <Grid columns="equal" stackable fluid attached>
+            <Grid.Row>
+              <Grid.Column><PrevNextCard data={index.previous} direction="previous" {...prevNextCardProps} /></Grid.Column>
+              <Grid.Column><PrevNextCard data={index.next} direction="next" {...prevNextCardProps} /></Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Block>
       }
     </div>
   )
