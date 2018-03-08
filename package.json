@@ -5,7 +5,7 @@
   "repository": "https://github.com/ryanwiemer/gatsby-starter-gcn",
   "author": "Ryan Wiemer <ryan@ryanwiemer.com>",
   "dependencies": {
-    "@onextech/react-semantic-booster": "^0.6.35",
+    "@onextech/react-semantic-booster": "^0.6.36",
     "chalk": "^2.3.1",
     "contentful-import": "^6.2.0",
     "dotenv": "^5.0.0",
