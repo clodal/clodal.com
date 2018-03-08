@@ -61,9 +61,11 @@ const MinimalButton = styled(Button)`
 
 const ImgZoomer = styled.div`
   cursor: zoom-in;
-  margin-bottom: 2em;
-  overflow: hidden;
-  ${MediaCss.min.sm`max-height: 250px;`}
+  ${MediaCss.min.sm`
+    max-height: 250px;
+    overflow: hidden;
+    margin-bottom: 2em;
+  `}
 `;
 
 class CasestudyGallery extends React.Component {
