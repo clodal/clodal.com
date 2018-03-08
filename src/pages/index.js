@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
-import { Icon, Header, Container, Button, Divider } from 'semantic-ui-react'
+import { Header, Container, Button, Divider } from 'semantic-ui-react'
 import { Block } from '@onextech/react-semantic-booster'
 import PortfolioGrid from '../components/PortfolioGrid'
 import PostList from '../components/PostList'
@@ -122,7 +122,7 @@ const Index = ({ data }) =>  {
           <SectionLead>Got a project to share? Feel free to get in touch.</SectionLead>
           <Divider hidden />
           <ButtonLink primary size="huge" circular>
-            <PaddedLink to={`/contact/`}>Message me</PaddedLink>
+            <PaddedLink to="/contact">Message me</PaddedLink>
           </ButtonLink>
         </Container>
       </Block>
