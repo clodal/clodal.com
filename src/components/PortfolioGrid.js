@@ -138,11 +138,6 @@ export const CasestudyNodeFragment = graphql`
         abstract {
             abstract
         }
-        body {
-            childMarkdownRemark {
-                html
-            }
-        }
         publishDate
     }
 `;

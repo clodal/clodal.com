@@ -7,7 +7,6 @@ import { Grid, Container, Button, Modal } from 'semantic-ui-react'
 import { Block, MediaCss } from '@onextech/react-semantic-booster'
 import config from '../utils/siteConfig'
 import Tags from '../components/tags'
-import Body from '../components/body'
 import PrevNextCards from '../components/PrevNextCards'
 
 
@@ -15,10 +14,6 @@ injectGlobal`
   .ui.page.modals.dimmer.transition.visible.active {
     display: flex !important;
   }
-`;
-
-const PostContainer = styled(Container)`
-  padding: 3em 0;
 `;
 
 const HeaderContainer = styled(Container)`
@@ -157,7 +152,6 @@ const CasestudyTemplate = ({ data }) => {
     heroImage,
     gallery,
     abstract,
-    body,
     publishDate,
     tags,
   } = data.contentfulCasestudy;
@@ -188,15 +182,6 @@ const CasestudyTemplate = ({ data }) => {
       </Block>
 
       {gallery && <CasestudyGallery data={gallery} />}
-
-      {
-        body &&
-        <Block attached>
-          <PostContainer text>
-            <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
-          </PostContainer>
-        </Block>
-      }
 
       <PrevNextCards index={casestudyIndex} parentSlug="portfolio" cardType="Project" />
 
